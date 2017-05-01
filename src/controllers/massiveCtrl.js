@@ -1,7 +1,8 @@
 const massive = require('massive');
+const secret = require('../../.config.js')
 
-const db = massive.connectSync({
-  connectionString : 'postgres://postgres:mikhail4@localhost:3001/postgres'
+const db =  massive.connectSync({
+  connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint,
 });
 
 exports.getDb = (req, res, next) => {

@@ -1,5 +1,4 @@
 const express = require('express');
-const massive = require('massive');
 const cors = require('cors');
 const massiveCtrl = require('./src/controllers/massiveCtrl.js');
 const app = express();
