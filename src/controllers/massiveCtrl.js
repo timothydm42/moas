@@ -12,3 +12,13 @@ exports.getDb = (req, res, next) => {
     res.send(database);
   });
 };
+exports.increment = (req, res, next) =>{
+  db.run([id],'update inventory set quantity = (quantity + 1) where productid = $1', (err, database){
+    res.send(database);
+  });
+};
+exports.decrement = (req, res, next) =>{
+  db.run([id],'update inventory set quantity = (quantity + 1) where productid = $1', (err, database){
+    res.send(database);
+  });
+};
