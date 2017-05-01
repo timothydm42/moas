@@ -1,0 +1,4 @@
+create table inventory (
+    productID serial primary key,
+    productName text unique not null,
+    quantity integer not null)
