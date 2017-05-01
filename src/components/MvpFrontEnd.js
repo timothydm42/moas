@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class mvpFrontEnd extends Component {
+export default class MvpFrontEnd extends Component {
   render() {
     return (
       <div>
