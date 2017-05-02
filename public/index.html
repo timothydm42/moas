@@ -27,5 +27,14 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
-  </body>
-</html>
+    <script src="inc/socket.io.js"></script>
+    <script>
+        WEB_SOCKET_SWF_LOCATION = 'inc/WebSocketMain.swf';
+        var socket = io.connect('http://localhost:3002');
+        socket.on('connected', function (data) {
+            socket.emit('ready for data', {});
+        });
+        socket.on('update', function (data) {
+            socket.emit(data.message.payload);
+        });
+    </script>
