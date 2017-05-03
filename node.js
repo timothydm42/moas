@@ -10,4 +10,4 @@ app.use(express.static('build'))
 
 app.get('/inventory', massiveCtrl.getDb);
 
-app.listen(3002, () => {console.log('listening on port 3002')});
+app.listen(3001, () => {console.log('listening on port 3001')});

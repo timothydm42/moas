@@ -3,7 +3,10 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 // document.location.host
-export default class MvpFrontEnd extends Component {
+// we can use this in the io url if we get the project hosted,
+//this will automatically find the hosted url and put it in
+
+export default class Inventory extends Component {
     constructor(props) {
         super(props);
         this.state = {

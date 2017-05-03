@@ -1,5 +1,6 @@
 const express = require('express');
 const massive = require('massive');
+<<<<<<< HEAD
 const secret = require('../../.config.js')
 const app = express();
 const http = require('http').Server(app);
@@ -19,10 +20,8 @@ pg_client.query('LISTEN changed', () => {
 });
 
 exports.getDb = (req, res, next) => {
-    console.log('stuff');
     db.run('select * from inventory', (err, database) => {
-        console.log(database);
-        res.send(database);
+      res.send(database);
     });
 };
 io.on('connection', (socket) => {
@@ -37,3 +36,22 @@ io.on('connection', (socket) => {
         });
     });
 });
+=======
+const secret = require('../../.config.js');
+
+const db =  massive.connectSync({
+  connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint
+});
+
+exports.getDb = (req, res, next) => {
+  db.run('select * from inventory', (err, database) =>{
+    res.send(database);
+  });
+};
+
+exports.incrementProduct = (req, res, next) => {
+  db.run("update inventory set quantity = (quantity + 1) where productname = $1", [param1], (err,result) => {
+    res.send(database);
+  });
+}
+>>>>>>> master
