@@ -19,11 +19,13 @@ componentDidMount() {
      </div>
    ) );
    this.setState({inventory: database});
-   socket.on('connect', () =>{
+
+   socket.on('connected', (data) =>{
+     socket.emit('ready for data', {});
+   });
      socket.on('update', (data) => {
        this.setState({inventory: data.message.payload});
      })
-   })
  });
 }
 

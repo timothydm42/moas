@@ -5,11 +5,16 @@ const app = express();
 const http = require('http').Server(app);
 const io = require ('socket.io');
 
+
 const db =  massive.connectSync({
   // connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint,
   connectionString : 'postgres://postgres:mikhail4@localhost:3001/postgres'
 });
-let query = db.run('listen changed');
+
+const db_client = new db.Client(connectionString);
+db_client.connect();
+
+let query = db_client.query('listen changed');
 
 
 exports.getDb = (req, res, next) => {
@@ -33,7 +38,7 @@ io.sockets.on('connection', function (socket) {
     socket.emit('connected', { connected: true });
 
     socket.on('ready for data', function (data) {
-        db.on('notification', function(inventory) {
+        db_client.on('notification', function(inventory) {
             socket.emit('update', { message: inventory });
         });
     });
