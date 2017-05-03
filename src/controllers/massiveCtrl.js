@@ -3,43 +3,47 @@ const massive = require('massive');
 const secret = require('../../.config.js')
 const app = express();
 const http = require('http').Server(app);
-const io = require ('socket.io');
+const io = require('socket.io').listen(3003);
+const pg = require('pg');
 
+const db = massive.connectSync({
+    // connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint,
+    connectionString: 'postgres://postgres:mikhail4@localhost:3001/postgres'
+});
+let connectionString = db.connectionString;
+const pg_client = new pg.Client(connectionString);
+pg_client.connect();
 
-const db =  massive.connectSync({
-  // connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint,
-  connectionString : 'postgres://postgres:mikhail4@localhost:3001/postgres'
+pg_client.query('LISTEN changed', () => {
+    console.log('connected to postgres');
 });
 
-const db_client = new db.Client(connectionString);
-db_client.connect();
-
-let query = db_client.query('listen changed');
-
-
 exports.getDb = (req, res, next) => {
-  console.log('stuff');
-  db.run('select * from inventory', (err, database) =>{
-    console.log(database);
-    res.send(database);
-  });
+    console.log('stuff');
+    db.run('select * from inventory', (err, database) => {
+        console.log(database);
+        res.send(database);
+    });
 };
-exports.increment = (req, res, next) =>{
-  db.run([id],'update inventory set quantity = (quantity + 1) where productid = $1', (err, database) => {
-    res.send(database);
-  });
-};
-exports.decrement = (req, res, next) =>{
-  db.run([id],'update inventory set quantity = (quantity - 1) where productid = $1', (err, database) => {
-    res.send(database);
-  });
-};
-io.sockets.on('connection', function (socket) {
-    socket.emit('connected', { connected: true });
-
-    socket.on('ready for data', function (data) {
-        db_client.on('notification', function(inventory) {
-            socket.emit('update', { message: inventory });
+// exports.increment = (req, res, next) => {
+//     db.run([id], 'update inventory set quantity = (quantity + 1) where productid = $1', (err, database) => {
+//         res.send(database);
+//     });
+// };
+// exports.decrement = (req, res, next) => {
+//     db.run([id], 'update inventory set quantity = (quantity - 1) where productid = $1', (err, database) => {
+//         res.send(database);
+//     });
+// };
+io.on('connection', (socket) => {
+    socket.emit('connected', {connected: true});
+    console.log('user connected');
+    socket.on('ready for data', (data) => {
+      console.log('ready for data');
+        pg_client.on('notification', function(title) {
+            console.log('received notification');
+            console.log(title);
+            socket.emit('update', {message: title});
         });
     });
 });

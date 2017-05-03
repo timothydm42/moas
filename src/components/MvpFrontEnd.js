@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import io from 'socket.io-client';
+  import io from 'socket.io-client';
 
-let socket = io(document.location.protocol + '//' + document.location.host);
 
+// document.location.host
 export default class MvpFrontEnd extends Component {
 constructor(props) {
   super(props);
@@ -19,13 +19,15 @@ componentDidMount() {
      </div>
    ) );
    this.setState({inventory: database});
+  let socket = io(document.location.protocol + '//localhost:3003' );
+socket.on('connected', (data) => {
+  console.log('client connected');
+  socket.emit('ready for data', {});
+ });
+  socket.on('update', (data) => {
+     this.setState({inventory: data.message.payload});
+ });
 
-   socket.on('connected', (data) =>{
-     socket.emit('ready for data', {});
-   });
-     socket.on('update', (data) => {
-       this.setState({inventory: data.message.payload});
-     })
  });
 }
 
