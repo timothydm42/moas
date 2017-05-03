@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class Navbar extends Component {
   render() {
-    const styles = this.getStyles();
+    // const styles = this.getStyles();
     return (
       <div>
         <nav className="navbar navbar-default">

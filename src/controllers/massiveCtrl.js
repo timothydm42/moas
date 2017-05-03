@@ -12,7 +12,7 @@ exports.getDb = (req, res, next) => {
 };
 
 exports.incrementProduct = (req, res, next) => {
-  db.run("update inventory set quantity = (quantity + 1) where productname = $1", [slots.item.value], (err,result) => {
+  db.run("update inventory set quantity = (quantity + 1) where productname = $1", [param1], (err,result) => {
     res.send(database);
   });
 }
