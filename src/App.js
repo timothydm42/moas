@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MvpFrontEnd from './components/MvpFrontEnd';
+import Inventory from './components/Inventory';
 import Navbar from './components/Navbar';
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <MvpFrontEnd />
+        <Inventory />
       </div>
     );
   }
