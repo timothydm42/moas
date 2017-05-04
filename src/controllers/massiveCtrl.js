@@ -10,6 +10,23 @@ const db = massive.connectSync({
     connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint,
     // connectionString: 'postgres://postgres:mikhail4@localhost:3001/postgres'
 });
+
+
+exports.getDb = (req, res, next) => {
+    db.run('select * from inventory', (err, database) => {
+      res.send(database);
+    });
+};
+
+exports.setQuantity = (req,res,next) => {
+  console.log(req.body);
+  db.inventory.save({productid:req.body.productid,quantity:req.body.quantity,},(err,row)=>{
+    if(err)console.log(err);
+    res.send(row)
+  })
+  db.run('notify "changed"');
+}
+
 let connectionString = db.connectionString;
 const pg_client = new pg.Client(connectionString);
 pg_client.connect();
@@ -17,12 +34,6 @@ pg_client.connect();
 pg_client.query('LISTEN changed', () => {
     console.log('connected to postgres');
 });
-
-exports.getDb = (req, res, next) => {
-    db.run('select * from inventory', (err, database) => {
-      res.send(database);
-    });
-};
 io.on('connection', (socket) => {
     socket.emit('connected', {connected: true});
     console.log('user connected');
