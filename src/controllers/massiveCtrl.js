@@ -8,9 +8,7 @@ const pg = require('pg');
 
 const db = massive.connectSync({
     connectionString : "postgres://"+secret.dbUsername+":"+secret.dbPassword+"@"+secret.dbEndpoint,
-    // connectionString: 'postgres://postgres:mikhail4@localhost:3001/postgres'
 });
-
 
 exports.getDb = (req, res, next) => {
     db.run('select * from inventory', (err, database) => {

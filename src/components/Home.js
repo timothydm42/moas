@@ -2,14 +2,11 @@ import React, {Component} from 'react';
 
 export default class Home extends Component {
   render() {
-    const styles = this.getStyles();
+    // const styles = this.getStyles();
     return (
       <div>
-        <ul style={styles.navList}>
-          <li style={styles.navListItem}>Thing 1</li>
-          <li style={styles.navListItem}>Thing 2</li>
-          <li style={styles.navListItem}>Thing 3</li>
-        </ul>
+        <h1>Good Morning!</h1>
+        <p>If you would like to view your inventory, click the Inventory link in the navigation bar at the top of the page!</p>
       </div>
     )
   }
