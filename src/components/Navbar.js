@@ -32,7 +32,7 @@ export default class Navbar extends Component {
               </div>
             </div>
           </nav>
-          <Redirect from="/" to="/inventory"/>
+          <Redirect from="/" to="/about"/>
           <Route path="/home" component={Home}/>
           <Route path="/inventory" component={Inventory}/>
           <Route path="/about" component={About}/>
