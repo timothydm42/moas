@@ -4,8 +4,6 @@ import io from 'socket.io-client';
 
 import ItemCtrl from './ItemCtrl';
 
-//TODO ask Kyle if I need to import SIO to child component
-
 // document.location.host
 // we can use this in the io url if we get the project hosted,
 //this will automatically find the hosted url and put it in
