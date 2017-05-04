@@ -1,6 +1,8 @@
-import React, {Component} from 'react'; 
+import React, {Component} from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
+
+import ItemCtrl from './ItemCtrl';
 
 // document.location.host
 // we can use this in the io url if we get the project hosted,
@@ -12,22 +14,24 @@ export default class Inventory extends Component {
         this.state = {
             inventory: []
         };
+        this.database = []
     };
 
     componentDidMount() {
         axios.get('http://localhost:3002/inventory').then((res) => {
             console.log(res);
-            const database = res.data.map((row) => (
-                <div>
-                    {row.productid}, {row.productname}, {row.quantity}
-                </div>
+
+            this.database = res.data.sort((a,b)=>a.productid > b.productid).map((row) => (
+                <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
             ));
-            this.setState({inventory: database});
+
+            this.setState({inventory: this.database});
             let socket = io(document.location.protocol + '//localhost:3003');
             socket.on('connected', (data) => {
                 console.log('client connected');
                 socket.emit('ready for data', {});
             });
+
             socket.on('update', (data) => {
               location.reload();
                 this.setState({inventory: data.message.payload});
@@ -39,7 +43,7 @@ export default class Inventory extends Component {
     render() {
         return (
             <div>
-                {this.state.inventory}
+                {this.database}
             </div>
         )
     }
