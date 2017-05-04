@@ -41,10 +41,47 @@ export default class Inventory extends Component {
     }
 
     render() {
+        const styles = this.getStyles();
         return (
             <div>
+              <div style={styles.inventoryHeader}>
+                <div style={styles.headerPro}>
+                  <h3>Product</h3>
+                </div>
+                <div style={styles.headerQua}>
+                  <h3>Quantity</h3>
+                </div>
+              </div>
+              {/* End div for inventory header. */}
+
+              <div>
                 {this.database}
+              </div>
+              {/* End div for dynamically updated inventory. */}
+
             </div>
         )
+    }
+
+    getStyles() {
+      return {
+        inventoryHeader: {
+          display: "flex",
+          width: "55%",
+          margin: "0 auto",
+          textAlign: "center"
+        },
+        headerPro: {
+          borderBottom: "4px solid black",
+          borderRight: "2px solid black",
+          paddingBottom: "0px",
+          flex: 1,
+        },
+        headerQua: {
+          borderBottom: "4px solid black",
+          paddingBottom: "0px",
+          flex: 2,
+        }
+      }
     }
 }
