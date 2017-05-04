@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class Home extends Component {
   render() {
-    const styles = this.getStyles();
+    // const styles = this.getStyles();
     return (
       <div>
         <h1>Good Morning!</h1>

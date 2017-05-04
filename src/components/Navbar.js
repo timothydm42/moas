@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
 import Home from './Home';
-import Inventory from './Inventory';
+import Inventory from './Inventory/Inventory';
 import About from './About';
 import Contact from './Contact';
 
@@ -32,7 +32,7 @@ export default class Navbar extends Component {
               </div>
             </div>
           </nav>
-          <Redirect from="/" to="/about"/>
+          <Redirect from="/" to="/inventory"/>
           <Route path="/home" component={Home}/>
           <Route path="/inventory" component={Inventory}/>
           <Route path="/about" component={About}/>
