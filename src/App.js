@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Inventory from './components/Inventory';
+import Inventory from './components/Inventory/Inventory';
 import Navbar from './components/Navbar';
 
 class App extends Component {
