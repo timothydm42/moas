@@ -16,4 +16,8 @@ app.get('/inventory', massiveCtrl.getDb);
 
 app.put('/setQuantity',massiveCtrl.setQuantity);
 
+app.put('/removeProduct',massiveCtrl.removeProduct);
+
+app.post('/addProduct',massiveCtrl.addProduct);
+
 app.listen(3002, () => {console.log('listening on port 3002')});
