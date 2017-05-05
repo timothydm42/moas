@@ -7,6 +7,7 @@ export default class About extends Component {
       <div style={styles.aboutSurround}>
         <div style={styles.about}>
           <p style={styles.information}>This is an inventory management system built to function with the Amazon Alexa line of products. With this service, you will be able to handle your inventory with voice commands, allowing you to do what you need to do, when you need to do it.</p>
+          <p style={styles.information}>Update inventory, hands free, without the usual tedious data entry. We do provide an interface for tedious data entry too, in case you want it.</p>
           <p style={styles.information}>Note: Your Alexa already hates the number 2. That's not our fault.</p>
         </div>
       </div>

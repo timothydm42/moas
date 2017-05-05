@@ -7,11 +7,11 @@ import Contact from './Contact';
 
 export default class Navbar extends Component {
   render() {
-    // const styles = this.getStyles();
+    const styles = this.getStyles();
     return (
       <Router>
         <div>
-          <nav className="navbar navbar-default">
+          <nav className="navbar navbar-default" style={styles.navbarGeneral}>
             <div className="container">
               <div className="navbar-header">
                 <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -24,15 +24,15 @@ export default class Navbar extends Component {
               </div>
               <div id="navbar" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
-                  <li><Link to="/home">Home</Link></li>
-                  <li><Link to="/inventory">Inventory</Link></li>
-                  <li><Link to="/about">About</Link></li>
-                  <li><Link to="/contact">Contact</Link></li>
+                  <li style={styles.navbarButtons}><Link to="/home" style={styles.navButtonText}>Home</Link></li>
+                  <li style={styles.navbarButtons}><Link to="/inventory" style={styles.navButtonText}>Inventory</Link></li>
+                  <li style={styles.navbarButtons}><Link to="/about" style={styles.navButtonText}>About</Link></li>
+                  <li style={styles.navbarButtons}><Link to="/contact" style={styles.navButtonText}>Contact</Link></li>
                 </ul>
               </div>
             </div>
           </nav>
-          <Redirect from="/" to="/about"/>
+          <Redirect from="/" to="/inventory"/>
           <Route path="/home" component={Home}/>
           <Route path="/inventory" component={Inventory}/>
           <Route path="/about" component={About}/>
@@ -44,9 +44,19 @@ export default class Navbar extends Component {
 
   getStyles() {
     return {
-      example: {
-        margin: 0,
-        color: "black"
+      navbarGeneral: {
+        backgroundColor: "rgb(178, 161, 100)",
+        color: "black",
+        margin: 0
+      },
+      navbarButtons: {
+        backgroundColor: "rgb(255, 239, 186)",
+        margin: "8px 5px 2px 5px",
+        border: "1px solid rgb(255, 239, 186)",
+        borderRadius: "5px"
+      },
+      navButtonText: {
+        padding: "5px 10px 5px 10px"
       }
     }
   }

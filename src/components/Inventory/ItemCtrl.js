@@ -59,6 +59,7 @@ export default class ItemCtrl extends Component{
         display: "flex",
         width: "55%",
         margin: "0 auto",
+        backgroundColor: "rgb(212, 217, 255)"
       },
       product: {
         borderBottom: "2px solid black",

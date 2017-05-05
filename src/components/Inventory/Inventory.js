@@ -43,7 +43,7 @@ export default class Inventory extends Component {
     render() {
         const styles = this.getStyles();
         return (
-            <div>
+            <div style={styles.inventoryPage}>
               <div style={styles.inventoryHeader}>
                 <div style={styles.headerPro}>
                   <h3>Product</h3>
@@ -65,11 +65,17 @@ export default class Inventory extends Component {
 
     getStyles() {
       return {
+        inventoryPage: {
+          height: "100vh",
+          backgroundColor: "rgb(245, 245, 245)"
+        },
         inventoryHeader: {
           display: "flex",
           width: "55%",
           margin: "0 auto",
-          textAlign: "center"
+          marginTop: "20px",
+          textAlign: "center",
+          backgroundColor: "rgb(112, 120, 178)"
         },
         headerPro: {
           borderBottom: "4px solid black",
