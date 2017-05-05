@@ -56,6 +56,7 @@ export default class ItemCtrl extends Component{
         display: "flex",
         width: "55%",
         margin: "0 auto",
+        backgroundColor: "rgb(212, 217, 255)"
       },
       product: {
         borderBottom: "2px solid black",
@@ -64,7 +65,10 @@ export default class ItemCtrl extends Component{
         paddingBottom: "0px",
         left: "10px",
         flex: 1,
-        fontSize: "110%"
+        fontSize: "110%",
+        display: "flex",
+        justifyContent: "center",
+        alignItem: "center"
       },
       quantity: {
         borderBottom: "2px solid black",
@@ -72,7 +76,10 @@ export default class ItemCtrl extends Component{
         paddingBottom: "0px",
         flex: 1,
         textAlign: "center",
-        fontSize: "110%"
+        fontSize: "110%",
+        display: "flex",
+        justifyContent: "center",
+        alignItem: "center"
       },
       quanEdit: {
         borderBottom: "2px solid black",
