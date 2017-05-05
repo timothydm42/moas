@@ -17,9 +17,26 @@ exports.getDb = (req, res, next) => {
 };
 
 exports.setQuantity = (req,res,next) => {
-  console.log(req.body);
   db.inventory.save({productid:req.body.productid,quantity:req.body.quantity,},(err,row)=>{
     if(err)console.log(err);
+    res.send(row)
+  })
+  db.run('notify "changed"');
+}
+
+exports.addProduct = (req,res,next) => {
+  db.inventory.save({productname:req.body.productname,quantity:req.body.quantity},(err,row)=>{
+    if(err)console.log(err);
+    res.send(row)
+  })
+  db.run('notify "changed"');
+}
+
+exports.removeProduct = (req,res,next) => {
+  console.log(req.body)
+  db.run('delete from inventory where productname = $1',[req.body.productname],(err,row)=>{
+    if(err)console.log(err);
+    console.log(row)
     res.send(row)
   })
   db.run('notify "changed"');
