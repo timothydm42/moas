@@ -41,7 +41,7 @@ export default class Inventory extends Component {
                   ));
                   this.setState({inventory: this.database});
             });
-});
+          });
         });
     }
 
@@ -72,13 +72,12 @@ export default class Inventory extends Component {
       return {
         inventoryPage: {
           height: "100vh",
-          backgroundColor: "rgb(245, 245, 245)"
+          backgroundColor: "rgb(250, 250, 250)"
         },
         inventoryHeader: {
           display: "flex",
           width: "55%",
           margin: "0 auto",
-          marginTop: "20px",
           textAlign: "center",
           backgroundColor: "rgb(112, 120, 178)"
         },
@@ -86,11 +85,13 @@ export default class Inventory extends Component {
           borderBottom: "4px solid black",
           borderRight: "2px solid black",
           paddingBottom: "0px",
+          marginTop: "20px",
           flex: 1,
         },
         headerQua: {
           borderBottom: "4px solid black",
           paddingBottom: "0px",
+          marginTop: "20px",
           flex: 2,
         }
       }
