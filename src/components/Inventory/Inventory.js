@@ -49,10 +49,15 @@ export default class Inventory extends Component {
             });
 
             socket.on('update', (data) => {
-              location.reload();
-                this.setState({inventory: data.message.payload});
-            });
+              axios.get('http://localhost:3002/inventory').then((res) => {
+                  console.log(res);
 
+                  this.database = res.data.sort((a,b)=>a.productid > b.productid).map((row) => (
+                      <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+                  ));
+                  this.setState({inventory: this.database});
+            });
+});
         });
     }
 
