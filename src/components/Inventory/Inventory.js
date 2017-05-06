@@ -64,14 +64,14 @@ export default class Inventory extends Component {
                   this.addComponent = <AddProduct products={this.productsArray} />;
                   this.removeComponent = <RemoveProduct products={this.productsArray} />;
             });
-});
+          });
         });
     }
 
     render() {
         const styles = this.getStyles();
         return (
-            <div>
+            <div style={styles.inventoryPage}>
               <div style={styles.inventoryHeader}>
                 <div style={styles.headerPro}>
                   <h3>Product</h3>
@@ -101,21 +101,28 @@ export default class Inventory extends Component {
 
     getStyles() {
       return {
+        inventoryPage: {
+          height: "100vh",
+          backgroundColor: "rgb(250, 250, 250)"
+        },
         inventoryHeader: {
           display: "flex",
           width: "55%",
           margin: "0 auto",
-          textAlign: "center"
+          textAlign: "center",
+          backgroundColor: "rgb(112, 120, 178)"
         },
         headerPro: {
           borderBottom: "4px solid black",
           borderRight: "2px solid black",
           paddingBottom: "0px",
+          marginTop: "20px",
           flex: 1,
         },
         headerQua: {
           borderBottom: "4px solid black",
           paddingBottom: "0px",
+          marginTop: "20px",
           flex: 2,
         }
       }
