@@ -15,7 +15,6 @@ export default class Inventory extends Component {
         super();
         this.state = {
             prodArray: [],
-            propertyForUpdateTrigger:""
         };
         this.database = []
     };
@@ -24,7 +23,7 @@ export default class Inventory extends Component {
         axios.get('http://localhost:3002/inventory').then((res) => {
             console.log(res);
 
-            this.database = res.data.sort((a,b)=>a.productid > b.productid).map(row => (
+            this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
                 <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
             ));
 
@@ -43,7 +42,7 @@ export default class Inventory extends Component {
               axios.get('http://localhost:3002/inventory').then((res) => {
                 console.log(res + "    in the update");
 
-                this.database = res.data.sort((a,b)=>a.productid > b.productid).map(row => (
+                this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
                     <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
                 ));
                 this.setState({prodArray: res.data.map(row=>row.productname)});
