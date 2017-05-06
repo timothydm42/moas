@@ -6,14 +6,16 @@ export default class RemoveProduct extends Component{
     super(props)
     this.state = {
       product:"",
-      currentProdcutsArray:props.products
     }
     this.updateProduct = this.updateProduct.bind(this);
   }
 
   deleteProduct(productName){
-    if(!this.state.currentProdcutsArray.find(product=>product.trim() === productName.trim()) || !productName) return
-    console.log(productName + "in delete function")
+    if(!this.props.products.find(product=>product.trim() === productName.trim()) || !productName) return
+
+    this.props.products.splice(this.props.products.indexOf(productName),1)
+
+    console.log(this.props.products + "  in delete function")
     axios.put('http://localhost:3002/removeProduct',{
       productname:productName
     }).then(res=>console.log(res))
@@ -31,7 +33,7 @@ export default class RemoveProduct extends Component{
         <input value={this.state.product} onChange={this.updateProduct} placeholder="product name" />
 
         <button onClick={()=>(this.deleteProduct(this.state.product))} >Remove Product</button>
-        {console.log(JSON.stringify(this.state.product, null,2) + "  in remove")}
+        {console.log(JSON.stringify(this.props.products, null,2) + "  in remove")}
       </div>
     )
   }

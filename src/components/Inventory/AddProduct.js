@@ -8,20 +8,22 @@ export default class AddProduct extends Component{
     this.state = {
       amt:"",
       product:"",
-      currentProdcutsArray:props.products,
-      prop:""
     }
     this.updateAmt = this.updateAmt.bind(this);
     this.updateProduct = this.updateProduct.bind(this);
   }
 
   insertProduct(productName,quantity){
-    if(this.state.currentProdcutsArray.find(product=>product.trim() === productName.trim()) || !productName) return
+    if(this.props.products.find(product=>product.trim() === productName.trim()) || !productName) return
+
     const dbQantity = Number(quantity)
     axios.post('http://localhost:3002/addProduct',{
       productname:productName,
       quantity:dbQantity
-    }).then(res=>console.log(res))
+    }).then(res=>{
+      console.log(res)
+      this.props.products.push(productName)
+    })
   }
 
   updateAmt(evt) {
@@ -39,7 +41,7 @@ export default class AddProduct extends Component{
   render(){
     return(
       <div>
-        {console.log(this.state.currentProdcutsArray + "  in add")}
+        {console.log(JSON.stringify(this.props.products,null,2) + "  in add")}
         <input value={this.state.product} onChange={this.updateProduct} placeholder="product name" />
 
         <input value={this.state.amt} onChange={this.updateAmt} placeholder="quantity" />
