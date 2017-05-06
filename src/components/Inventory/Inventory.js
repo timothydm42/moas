@@ -11,16 +11,13 @@ import RemoveProduct from './RemoveProduct';
 //this will automatically find the hosted url and put it in
 
 export default class Inventory extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            inventory: [],
-            prodArray: []
+            prodArray: [],
+            propertyForUpdateTrigger:""
         };
         this.database = []
-        this.productsArray= []
-        this.addComponent = ""
-        this.removeComponent = ""
     };
 
     componentDidMount() {
@@ -31,39 +28,26 @@ export default class Inventory extends Component {
                 <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
             ));
 
-            //prodcuts array for AddProduct and RemoveProduct
-
-            this.productsArray = res.data.map(row=>row.productname);
-
-            this.addComponent = <AddProduct products={this.productsArray} />;
-            this.removeComponent = <RemoveProduct products={this.productsArray} />;
-
-            this.setState({
-              inventory: this.database,
-              prodArray: this.productsArray
-            });
             let socket = io(document.location.protocol + '//localhost:3003');
             socket.on('connected', (data) => {
                 console.log('client connected');
                 socket.emit('ready for data', {});
             });
 
+            this.setState({
+              prodArray: res.data.map(row=>row.productname)
+            });                                    //does socket.on(update) need to be in the then of the
+                                                //original db request?
             socket.on('update', (data) => {
               console.log(data)
               axios.get('http://localhost:3002/inventory').then((res) => {
-                  console.log(res + "    in the update");
+                console.log(res + "    in the update");
 
-                  this.database = res.data.sort((a,b)=>a.productid > b.productid).map((row) => (
-                      <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
-                  ));
-                  this.productsArray = res.data.map(row=>row.productname);
-                  this.setState({inventory: this.database,prodArray: this.productsArray});
-                  this.database = res.data.sort((a,b)=>a.productid > b.productid).map(row => (
-                      <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
-                  ));
-                  this.addComponent = <AddProduct products={this.productsArray} />;
-                  this.removeComponent = <RemoveProduct products={this.productsArray} />;
-            });
+                this.database = res.data.sort((a,b)=>a.productid > b.productid).map(row => (
+                    <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+                ));
+                this.setState({prodArray: res.data.map(row=>row.productname)});
+              });
           });
         });
     }
@@ -88,11 +72,11 @@ export default class Inventory extends Component {
               {/* End div for dynamically updated inventory. */}
 
              {/* BEGIN AddProduct Component */}
-             {this.addComponent}
+             <AddProduct products={this.state.prodArray} />
              {/* END AddProduct Component */}
 
              {/* BEGIN RemoveProduct Component */}
-             {this.removeComponent}
+             <RemoveProduct products={this.state.prodArray} />
              {/* END RemoveProduct Component */}
 
             </div>

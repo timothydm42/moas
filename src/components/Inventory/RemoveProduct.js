@@ -18,7 +18,12 @@ export default class RemoveProduct extends Component{
     console.log(this.props.products + "  in delete function")
     axios.put('http://localhost:3002/removeProduct',{
       productname:productName
-    }).then(res=>console.log(res))
+    }).then(res=>{
+      console.log(res)
+      this.setState({
+        product:""
+      })
+    })
   }
 
   updateProduct(evt) {

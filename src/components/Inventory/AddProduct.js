@@ -23,6 +23,10 @@ export default class AddProduct extends Component{
     }).then(res=>{
       console.log(res)
       this.props.products.push(productName)
+      this.setState({
+        amt:"",
+        product:""
+      })
     })
   }
 
