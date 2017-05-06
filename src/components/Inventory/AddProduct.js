@@ -14,15 +14,14 @@ export default class AddProduct extends Component{
   }
 
   insertProduct(productName,quantity){
+
     if(this.props.products.find(product=>product.trim() === productName.trim()) || !productName) return
 
-    const dbQantity = Number(quantity)
     axios.post('http://localhost:3002/addProduct',{
       productname:productName,
-      quantity:dbQantity
+      quantity
     }).then(res=>{
       console.log(res)
-      this.props.products.push(productName)
       this.setState({
         amt:"",
         product:""
