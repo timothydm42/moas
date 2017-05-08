@@ -12,7 +12,7 @@ export default class ItemCtrl extends Component{
   }
   setQuantity(id,amt){
     if(Number(amt) !== 0 && !Number(amt) || Number(amt) === this.props.qAmt) return
-    axios.put('http://138.68.229.153:3000/setQuantity',{
+    axios.put('http://138.68.229.153:3002/setQuantity',{
       productid:id,
       quantity:amt
     }).then(res=>console.log(res))
