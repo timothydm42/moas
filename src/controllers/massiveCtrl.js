@@ -25,7 +25,7 @@ exports.setQuantity = (req,res,next) => {
 }
 
 exports.addProduct = (req,res,next) => {
-  db.inventory.save({productname:req.body.productname,quantity:req.body.quantity},(err,row)=>{
+  db.inventory.save({productname:req.body.productname.toLowerCase(),quantity:req.body.quantity},(err,row)=>{
     if(err)console.log(err);
     res.send(row)
   })
@@ -34,7 +34,7 @@ exports.addProduct = (req,res,next) => {
 
 exports.removeProduct = (req,res,next) => {
   console.log(req.body)
-  db.run('delete from inventory where productname = $1',[req.body.productname],(err,row)=>{
+  db.run('delete from inventory where productname = $1',[req.body.productname.toLowerCase()],(err,row)=>{
     if(err)console.log(err);
     console.log(row)
     res.send(row)
