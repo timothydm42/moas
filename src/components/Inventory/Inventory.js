@@ -20,7 +20,7 @@ export default class Inventory extends Component {
     };
 
     componentDidMount() {
-        axios.get('/inventory').then((res) => {
+        axios.get('http://138.68.229.153:3000/inventory').then((res) => {
             console.log(res);
 
             this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
@@ -39,7 +39,7 @@ export default class Inventory extends Component {
                                                 //original db request?
             socket.on('update', (data) => {
               console.log(data)
-              axios.get('/inventory').then((res) => {
+              axios.get('http://138.68.229.153:3000/inventory').then((res) => {
                 console.log(res + "    in the update");
 
                 this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (

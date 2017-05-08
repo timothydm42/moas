@@ -14,7 +14,7 @@ export default class RemoveProduct extends Component{
     if(!this.props.products.find(product=>product.toLowerCase().trim() === productName.toLowerCase().trim()) || !productName) return
 
     console.log(this.props.products + "  in delete function")
-    axios.put('/removeProduct',{
+    axios.put('http://138.68.229.153:3000/removeProduct',{
       productname:productName.toLowerCase()
     }).then(res=>{
       console.log(res)
