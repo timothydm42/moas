@@ -41,13 +41,14 @@ export default class Navbar extends Component {
         margin: 0
       },
       navbarButtons: {
-        backgroundColor: "rgb(255, 239, 186)",
+        backgroundColor: "rgb(96, 103, 178)",
         margin: "8px 5px 2px 5px",
         border: "1px solid rgb(255, 239, 186)",
         borderRadius: "5px"
       },
       navButtonText: {
-        padding: "5px 10px 5px 10px"
+        padding: "5px 10px 5px 10px",
+        color: "rgb(186, 192, 255)"
       }
     }
   }

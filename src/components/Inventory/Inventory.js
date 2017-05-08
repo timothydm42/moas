@@ -92,7 +92,7 @@ export default class Inventory extends Component {
       return {
         inventoryPage: {
           height: "100vh",
-          backgroundColor: "rgb(245, 245, 245)"
+          backgroundColor: "rgb(255, 246, 212)"
         },
         inventory: { // This class bothers me. But it works.
           marginTop: "11px" // Addendum: Still bothers me but it doesn't work. See Navbar.js
@@ -107,7 +107,7 @@ export default class Inventory extends Component {
           borderBottom: "4px solid black",
           borderRight: "2px solid black",
           borderRadius: "5px 0px 0px 0px",
-          backgroundColor: "rgb(112, 120, 178)",
+          backgroundColor: "rgb(96, 103, 178)",
           padding: "0px",
           marginTop: 0,
           flex: 1,
@@ -115,7 +115,7 @@ export default class Inventory extends Component {
         headerQua: {
           borderBottom: "4px solid black",
           borderRadius: "0px 5px 0px 0px",
-          backgroundColor: "rgb(112, 120, 178)",
+          backgroundColor: "rgb(96, 103, 178)",
           padding: "0px",
           marginTop: 0,
           flex: 2,
