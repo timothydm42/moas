@@ -31,13 +31,33 @@ export default class RemoveProduct extends Component{
   }
 
   render(){
+    const styles = this.getStyles();
     return(
-      <div>
-        <input value={this.state.product} onChange={this.updateProduct} placeholder="product name" />
+      <div style={styles.rem}>
+        <input value={this.state.product} onChange={this.updateProduct} placeholder="Product Name" style={styles.product} />
 
-        <button onClick={()=>(this.deleteProduct(this.state.product))} >Remove Product</button>
+        <button onClick={()=>(this.deleteProduct(this.state.product))} style={styles.button} >Remove Product</button>
         {console.log(JSON.stringify(this.props.products, null,2) + "  in remove")}
       </div>
     )
+  }
+
+  getStyles() {
+    return {
+      rem: {
+        backgroundColor: "rgb(123, 54, 255)",
+        padding: "5px"
+      },
+      product: {
+        backgroundColor: "rgb(51, 37, 232)",
+        width: "90%",
+        fontSize: "80%"
+      },
+      button: {
+        fontSize: "70%",
+        padding: "5px",
+        marginTop: "5px"
+      }
+    }
   }
 }
