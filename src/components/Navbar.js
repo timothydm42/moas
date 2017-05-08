@@ -22,21 +22,8 @@ export default class Navbar extends Component {
                 </button>
                 <Link to="/home" className="navbar-brand">Alexa Inventory with Manuel</Link>
               </div>
-              <div id="navbar" className="navbar-collapse collapse">
-                <ul className="nav navbar-nav navbar-right">
-                  <li style={styles.navbarButtons}><Link to="/home" style={styles.navButtonText}>Home</Link></li>
-                  <li style={styles.navbarButtons}><Link to="/inventory" style={styles.navButtonText}>Inventory</Link></li>
-                  <li style={styles.navbarButtons}><Link to="/about" style={styles.navButtonText}>About</Link></li>
-                  <li style={styles.navbarButtons}><Link to="/contact" style={styles.navButtonText}>Contact</Link></li>
-                </ul>
-              </div>
             </div>
           </nav>
-          <Redirect from="/" to="/inventory"/>
-          <Route path="/home" component={Home}/>
-          <Route path="/inventory" component={Inventory}/>
-          <Route path="/about" component={About}/>
-          <Route path="/contact" component={Contact}/>
         </div>
       </Router>
       // So I'm realizing now that all of this routing needs to be primarily handled on the App.js file
