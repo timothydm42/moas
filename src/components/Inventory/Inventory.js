@@ -92,10 +92,8 @@ export default class Inventory extends Component {
       return {
         inventoryPage: {
           height: "100vh",
+          padding: "11px",
           backgroundColor: "rgb(255, 246, 212)"
-        },
-        inventory: { // This class bothers me. But it works.
-          marginTop: "11px" // Addendum: Still bothers me but it doesn't work. See Navbar.js
         },
         inventoryHeader: {
           display: "flex",

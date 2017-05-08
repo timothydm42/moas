@@ -12,12 +12,12 @@ class App extends Component {
       <div>
         <Router>
           <div>
-        <Navbar />
-          <Redirect from="/" to="/inventory"/>
-          <Route path="/home" component={Home}/>
-          <Route path="/inventory" component={Inventory}/>
-          <Route path="/about" component={About}/>
-          <Route path="/contact" component={Contact}/>
+            <Navbar />
+            <Redirect from="/" to="/inventory"/>
+            <Route path="/home" component={Home}/>
+            <Route path="/inventory" component={Inventory}/>
+            <Route path="/about" component={About}/>
+            <Route path="/contact" component={Contact}/>
           </div>
         </Router>
       </div>

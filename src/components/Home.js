@@ -9,7 +9,7 @@ export default class Home extends Component {
           <h1 style={styles.welcomeText}>Good Morning!</h1>
         </div>
         <div style={styles.intro}>
-          <p>If you would like to view your inventory, click the Inventory link in the navigation bar at the top of the page!</p>
+          <p style={styles.introText}>If you would like to view your inventory, click the Inventory link in the navigation bar at the top of the page!</p>
         </div>
       </div>
     )
@@ -19,7 +19,8 @@ export default class Home extends Component {
     return {
       home: {
         backgroundColor: "rgb(255, 246, 212)",
-        height: "100vh"
+        height: "100vh",
+        padding: "50px"
       },
       welcome: {
         margin: "0 auto",
@@ -32,6 +33,9 @@ export default class Home extends Component {
         margin: "0 auto",
         textAlign: "center",
         width: "75%"
+      },
+      introText: {
+        
       }
     }
   }
