@@ -39,6 +39,10 @@ export default class Navbar extends Component {
           <Route path="/contact" component={Contact}/>
         </div>
       </Router>
+      // So I'm realizing now that all of this routing needs to be primarily handled on the App.js file
+      // because it's messing with the actual placement of components.
+      // Currently everything is coming from the Navbar component, so the whole website starts immediately
+      // below the navbar, which is causing some issues.
     )
   }
 
