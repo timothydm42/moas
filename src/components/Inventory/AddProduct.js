@@ -17,7 +17,7 @@ export default class AddProduct extends Component{
 
     if(this.props.products.find(product=>product.toLowerCase().trim() === productName.toLowerCase().trim()) || !productName) return
 
-    axios.post('http://localhost:3002/addProduct',{
+    axios.post('/addProduct',{
       productname:productName.toLowerCase(),
       quantity
     }).then(res=>{
