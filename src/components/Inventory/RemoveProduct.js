@@ -45,7 +45,7 @@ export default class RemoveProduct extends Component{
   getStyles() {
     return {
       rem: {
-        backgroundColor: "rgb(178, 164, 112)",
+        backgroundColor: "#CDCDCD",
         padding: "5px"
       },
       product: {
@@ -53,7 +53,8 @@ export default class RemoveProduct extends Component{
         fontSize: "80%"
       },
       button: {
-        backgroundColor: "rgb(186, 192, 255)",
+        backgroundColor: "#88BBD6",
+        color: "white",
         fontSize: "70%",
         padding: "5px",
         marginTop: "5px"

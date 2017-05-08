@@ -15,7 +15,7 @@ export default class Navbar extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link to="/home" className="navbar-brand">Alexa Inventory with Manuel</Link>
+                <Link to="/home" className="navbar-brand" style={styles.title}>Alexa Inventory with Manuel</Link>
               </div>
               <ul className="nav navbar-nav navbar-right">
                 <li style={styles.navbarButtons}><Link to="/home" style={styles.navButtonText}>Home</Link></li>
@@ -35,19 +35,24 @@ export default class Navbar extends Component {
         zIndex: +2
       },
       navbarGeneral: {
-        backgroundColor: "rgb(178, 161, 100)",
+        backgroundColor: "#CDCDCD",
         color: "black",
-        margin: 0
+        margin: 0,
+        boxShadow: "3px 3px 5px rgb(175, 175, 175)"
+      },
+      title: {
+        color: "white"
       },
       navbarButtons: {
-        backgroundColor: "rgb(96, 103, 178)",
+        backgroundColor: "#99D3DF",
         margin: "8px 5px 2px 5px",
-        border: "1px solid rgb(255, 239, 186)",
-        borderRadius: "5px"
+        border: "1px solid #88BBD6",
+        borderRadius: "5px",
+        boxShadow: "3px 3px 3px rgb(175, 175, 175)"
       },
       navButtonText: {
         padding: "5px 10px 5px 10px",
-        color: "rgb(186, 192, 255)"
+        color: "white"
       }
     }
   }

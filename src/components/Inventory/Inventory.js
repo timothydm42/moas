@@ -101,9 +101,9 @@ export default class Inventory extends Component {
                </div>
 
                {/* BEGIN search bar  */}
-               <div>
-                 Search:
-                 <input value={this.state.searchTerm} onChange={this.updateSearchTerm} placeholder="Product Name" />
+               <div style={styles.search}>
+                 <p style={styles.searchTitle}>Search</p>
+                 <input value={this.state.searchTerm} onChange={this.updateSearchTerm} placeholder="Product Name" style={styles.searchInput} />
                </div>
 
 
@@ -116,54 +116,84 @@ export default class Inventory extends Component {
         inventoryPage: {
           height: "100vh",
           padding: "11px",
-          backgroundColor: "rgb(255, 246, 212)"
+          backgroundColor: "#E9E9E9"
+        },
+        inventory: {
+          width: "55%",
+          margin: "0 auto",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
         },
         inventoryHeader: {
           display: "flex",
-          width: "55%",
-          margin: "0 auto",
           textAlign: "center"
         },
         headerPro: {
-          borderBottom: "4px solid black",
-          borderRight: "2px solid black",
+          borderBottom: "4px solid white",
+          borderRight: "2px solid white",
           borderRadius: "5px 0px 0px 0px",
-          backgroundColor: "rgb(96, 103, 178)",
+          backgroundColor: "#88BBD6",
           padding: "0px",
           marginTop: 0,
-          flex: 1,
+          flex: 1
         },
         headerQua: {
-          borderBottom: "4px solid black",
+          borderBottom: "4px solid white",
           borderRadius: "0px 5px 0px 0px",
-          backgroundColor: "rgb(96, 103, 178)",
+          backgroundColor: "#88BBD6",
           padding: "0px",
           marginTop: 0,
-          flex: 2,
+          flex: 2
         },
         prodAdd: {
           position: "fixed",
           top: "65px",
           left: "10px",
           width: "20%",
-          border: "1px solid black",
-          borderRadius: "5px"
+          border: "1px solid white",
+          borderRadius: "5px",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
         },
         prodRem: {
           position: "fixed",
           bottom: "20px",
           left: "10px",
           width: "20%",
-          border: "1px solid black",
-          borderRadius: "5px"
+          border: "1px solid white",
+          borderRadius: "5px",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
         },
         pro: { // These next two classes bother me too.
           padding: "5px",
-          margin: "5px"
+          margin: "5px",
+          color: "white"
         },
         qua: {
           padding: "5px",
-          margin: "5px"
+          margin: "5px",
+          color: "white"
+        },
+        search: {
+          width: "20%",
+          position: "fixed",
+          top: "65px",
+          right: "15px",
+          backgroundColor: "#CDCDCD",
+          padding: "5px",
+          border: "1px solid white",
+          borderRadius: "5px",
+          textAlign: "right",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
+        },
+        searchTitle: {
+          color: "white",
+          margin: 0,
+          padding: "3px",
+          fontSize: "120%"
+        },
+        searchInput: {
+          width: "90%",
+          fontSize: "80%",
+          marginTop: "5px"
         }
       }
     }
