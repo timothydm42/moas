@@ -27,7 +27,7 @@ export default class Inventory extends Component {
                 <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
             ));
 
-            let socket = io(document.location.protocol + '//localhost:3003');
+            let socket = io(document.location.protocol + '//138.68.229.153:3003');
             socket.on('connected', (data) => {
                 console.log('client connected');
                 socket.emit('ready for data', {});
