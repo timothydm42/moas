@@ -14,18 +14,22 @@ export default class Inventory extends Component {
     constructor() {
         super();
         this.state = {
-            prodArray: [],
+          dbRows: [],
+          prodArray: [],
+          searchTerm: "",
         };
-        this.database = []
+        this.updateSearchTerm = this.updateSearchTerm.bind(this)
     };
+
+    updateSearchTerm(evt) {
+      this.setState({
+        searchTerm: evt.target.value
+      });
+    }
 
     componentDidMount() {
         axios.get('http://localhost:3002/inventory').then((res) => {
             console.log(res);
-
-            this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
-                <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
-            ));
 
             let socket = io(document.location.protocol + '//localhost:3003');
             socket.on('connected', (data) => {
@@ -34,18 +38,20 @@ export default class Inventory extends Component {
             });
 
             this.setState({
-              prodArray: res.data.map(row=>row.productname)
-            });                                    //does socket.on(update) need to be in the then of the
-                                                //original db request?
+              dbRows: res.data,
+              prodArray: res.data.map(row=>row.productname),
+            });
+
             socket.on('update', (data) => {
               console.log(data)
               axios.get('http://localhost:3002/inventory').then((res) => {
                 console.log(res + "    in the update");
 
-                this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
-                    <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
-                ));
-                this.setState({prodArray: res.data.map(row=>row.productname)});
+                this.setState({
+                  dbRows: res.data,
+                  prodArray: res.data.map(row=>row.productname),
+                });
+
               });
           });
         });
@@ -53,6 +59,18 @@ export default class Inventory extends Component {
 
     render() {
         const styles = this.getStyles();
+
+        const dbRowsDisplay = this.state.searchTerm ? this.state.dbRows
+        .filter(e=>e.productname.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1)
+        .sort((a,b)=>a.productname > b.productname)
+        .map(row => (
+            <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+        )) : this.state.dbRows
+        .sort((a,b)=>a.productname > b.productname)
+        .map(row => (
+            <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+        ))
+
         return (
             <div style={styles.inventoryPage}>
               <div style={styles.inventory}>
@@ -67,22 +85,27 @@ export default class Inventory extends Component {
                 {/* End div for inventory header. */}
 
                 <div>
-                  {this.database}
+                  {dbRowsDisplay}
                 </div>
                 {/* End div for dynamically updated inventory. */}
               </div>
 
-             {/* BEGIN AddProduct Component */}
-             <div style={styles.prodAdd}>
-               <AddProduct products={this.state.prodArray} />
-             </div>
-             {/* END AddProduct Component */}
+               {/* BEGIN AddProduct Component */}
+               <div style={styles.prodAdd}>
+                 <AddProduct products={this.state.prodArray} />
+               </div>
 
-             {/* BEGIN RemoveProduct Component */}
-             <div style={styles.prodRem}>
-               <RemoveProduct products={this.state.prodArray} />
-             </div>
-             {/* END RemoveProduct Component */}
+               {/* BEGIN RemoveProduct Component */}
+               <div style={styles.prodRem}>
+                 <RemoveProduct products={this.state.prodArray} />
+               </div>
+
+               {/* BEGIN search bar  */}
+               <div>
+                 Search:
+                 <input value={this.state.searchTerm} onChange={this.updateSearchTerm} placeholder="Product Name" />
+               </div>
+
 
             </div>
         )
