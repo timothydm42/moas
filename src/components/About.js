@@ -6,6 +6,12 @@ export default class About extends Component {
     const styles = this.getStyles();
     return (
       <div style={styles.aboutPage}>
+        <p>
+          What does this application do?
+        </p>
+        <p>
+          This application helps you maintain your inventory. It does this uniquely with verbal commands, using Amazon Alexa devices.
+        </p>
         <div className="row" style={styles.about}>
           <p className="col-md-4" style={styles.information}><strong>Problem:</strong> Tedious, error prone data entry
             No more keeping notes in your head or elsewhere, and then sitting down to your inventory and manually entering in each change; simply inform alexa when inventory changes, and she takes care of updating your records.
@@ -38,12 +44,17 @@ export default class About extends Component {
   getStyles() {
     return {
       aboutPage: {
-        backgroundColor: "#E9E9E9",
+        backgroundImage: "url(http://southjerseytechies.net/blog/wp-content/uploads/2012/08/clouds.jpg)",
+        backgroundSize: "100%",
         height: "100vh",
         padding: "15px"
       },
       about: {
         backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "5px",
+        boxShadow: "3px 3px 3px rgb(245, 245, 245)",
+        opacity: 0.85,
         color: "white",
         width: "98%",
         margin: "0 auto"
