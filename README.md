@@ -18,7 +18,7 @@
    =>   Using the App
         -------------
 
-        This website is designed to be easy to use and to be used in
+        This web app is designed to be easy to use and to be used in
         conjunction with the Amazon Alexa line of products.
 
         Initially you are brought to the inventory page, this is most
