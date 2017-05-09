@@ -19,7 +19,7 @@ export default class About extends Component {
             The cloud based inventory is accessible online for convenient viewing.
             Including live updates sent by Alexa you can update the cloud based inventory manually as well.
           </p>
-          <ul className="col-md-3" style={styles.information}><h4 style={styles.techs}>Web technologies:</h4>
+          <ul className="col-md-3" style={styles.information}><h4 style={styles.techs}><strong>Web technologies:</strong></h4>
             <li><strong>Client:</strong> React library, React-Router, Axios</li>
             <li><strong>Server:</strong> Node, Express, Massive</li>
             <li><strong>Database:</strong> Postgresql AWS Remote Database FAAS</li>
