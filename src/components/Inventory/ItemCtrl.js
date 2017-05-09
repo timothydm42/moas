@@ -54,13 +54,12 @@ export default class ItemCtrl extends Component{
     return {
       inventory: {
         display: "flex",
-        width: "55%",
-        margin: "0 auto",
-        backgroundColor: "rgb(186, 192, 255)"
+        backgroundColor: "#99D3DF",
+        boxShadow: "3px 3px 10px rgb(175, 175, 175)"
       },
       product: {
-        borderBottom: "2px solid black",
-        borderRight: "2px solid black",
+        borderBottom: "2px solid white",
+        borderRight: "2px solid white",
         paddingTop: "6px",
         paddingBottom: "0px",
         left: "10px",
@@ -68,10 +67,11 @@ export default class ItemCtrl extends Component{
         fontSize: "110%",
         display: "flex",
         justifyContent: "center",
-        alignItem: "center"
+        alignItem: "center",
+        color: "white"
       },
       quantity: {
-        borderBottom: "2px solid black",
+        borderBottom: "2px solid white",
         paddingTop: "6px",
         paddingBottom: "0px",
         flex: 1,
@@ -79,10 +79,11 @@ export default class ItemCtrl extends Component{
         fontSize: "110%",
         display: "flex",
         justifyContent: "center",
-        alignItem: "center"
+        alignItem: "center",
+        color: "white"
       },
       quanEdit: {
-        borderBottom: "2px solid black",
+        borderBottom: "2px solid white",
         paddingTop: "6px",
         paddingBottom: "0px",
         flex: 1,
@@ -90,12 +91,17 @@ export default class ItemCtrl extends Component{
       },
       quanEditInput: {
         width: "60px",
-        height: "24px"
+        height: "24px",
+        fontSize: "80%"
       },
       quanEditButton: {
+        backgroundColor: "#88BBD6",
+        marginLeft: "5px",
+        color: "white",
         fontSize: "65%",
         width: "38px",
-        height: "24px"
+        height: "24px",
+        border: "1px solid white"
       }
     }
   }

@@ -60,11 +60,11 @@ export default class AddProduct extends Component{
   getStyles() {
     return {
       add: {
-        backgroundColor: "rgb(178, 164, 112)",
+        backgroundColor: "#CDCDCD",
         padding: "5px"
       },
       title: {
-        color: "rgb(#333333)",
+        color: "white",
         margin: 0,
         padding: "3px",
         fontSize: "120%"
@@ -72,7 +72,8 @@ export default class AddProduct extends Component{
       product: {
         width: "60%",
         fontSize: "80%",
-        marginTop: "5px"
+        marginTop: "5px",
+        color: "#88BBD6",
       },
       quantity: {
         width: "30%",
@@ -80,10 +81,13 @@ export default class AddProduct extends Component{
         marginLeft: "10px"
       },
       button: {
-        backgroundColor: "rgb(186, 192, 255)",
+        backgroundColor: "#88BBD6",
+        color: "white",
         fontSize: "70%",
         padding: "5px",
-        marginTop: "5px"
+        marginTop: "5px",
+        border: "1px solid white",
+        boxShadow: "2px 2px 2px rgb(175, 175, 175)"
       }
     }
   }

@@ -14,38 +14,50 @@ export default class Inventory extends Component {
     constructor() {
         super();
         this.state = {
-            prodArray: [],
+          dbRows: [],
+          prodArray: [],
+          searchTerm: "",
         };
-        this.database = []
+        this.updateSearchTerm = this.updateSearchTerm.bind(this)
     };
+
+    updateSearchTerm(evt) {
+      this.setState({
+        searchTerm: evt.target.value
+      });
+    }
 
     componentDidMount() {
         axios.get('http://138.68.229.153:3002/inventory').then((res) => {
             console.log(res);
+
 
             this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
                 <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
             ));
 
             let socket = io(document.location.protocol + '//138.68.229.153:3003');
+
             socket.on('connected', (data) => {
                 console.log('client connected');
                 socket.emit('ready for data', {});
             });
 
             this.setState({
-              prodArray: res.data.map(row=>row.productname)
-            });                                    //does socket.on(update) need to be in the then of the
-                                                //original db request?
+              dbRows: res.data,
+              prodArray: res.data.map(row=>row.productname),
+            });
+
             socket.on('update', (data) => {
               console.log(data)
               axios.get('http://138.68.229.153:3002/inventory').then((res) => {
                 console.log(res + "    in the update");
 
-                this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
-                    <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
-                ));
-                this.setState({prodArray: res.data.map(row=>row.productname)});
+                this.setState({
+                  dbRows: res.data,
+                  prodArray: res.data.map(row=>row.productname),
+                });
+
               });
           });
         });
@@ -53,6 +65,18 @@ export default class Inventory extends Component {
 
     render() {
         const styles = this.getStyles();
+
+        const dbRowsDisplay = this.state.searchTerm ? this.state.dbRows
+        .filter(e=>e.productname.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1)
+        .sort((a,b)=>a.productname > b.productname)
+        .map(row => (
+            <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+        )) : this.state.dbRows
+        .sort((a,b)=>a.productname > b.productname)
+        .map(row => (
+            <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+        ))
+
         return (
             <div style={styles.inventoryPage}>
               <div style={styles.inventory}>
@@ -67,22 +91,27 @@ export default class Inventory extends Component {
                 {/* End div for inventory header. */}
 
                 <div>
-                  {this.database}
+                  {dbRowsDisplay}
                 </div>
                 {/* End div for dynamically updated inventory. */}
               </div>
 
-             {/* BEGIN AddProduct Component */}
-             <div style={styles.prodAdd}>
-               <AddProduct products={this.state.prodArray} />
-             </div>
-             {/* END AddProduct Component */}
+               {/* BEGIN AddProduct Component */}
+               <div style={styles.prodAdd}>
+                 <AddProduct products={this.state.prodArray} />
+               </div>
 
-             {/* BEGIN RemoveProduct Component */}
-             <div style={styles.prodRem}>
-               <RemoveProduct products={this.state.prodArray} />
-             </div>
-             {/* END RemoveProduct Component */}
+               {/* BEGIN RemoveProduct Component */}
+               <div style={styles.prodRem}>
+                 <RemoveProduct products={this.state.prodArray} />
+               </div>
+
+               {/* BEGIN search bar  */}
+               <div style={styles.search}>
+                 <p style={styles.searchTitle}>Search</p>
+                 <input value={this.state.searchTerm} onChange={this.updateSearchTerm} placeholder="Product Name" style={styles.searchInput} />
+               </div>
+
 
             </div>
         )
@@ -92,57 +121,85 @@ export default class Inventory extends Component {
       return {
         inventoryPage: {
           height: "100vh",
-          backgroundColor: "rgb(255, 246, 212)"
+          padding: "11px",
+          backgroundColor: "#E9E9E9"
         },
-        inventory: { // This class bothers me. But it works.
-          marginTop: "11px" // Addendum: Still bothers me but it doesn't work. See Navbar.js
+        inventory: {
+          width: "55%",
+          margin: "0 auto",
+          boxShadow: "7px 7px 7px rgb(175, 175, 175)"
         },
         inventoryHeader: {
           display: "flex",
-          width: "55%",
-          margin: "0 auto",
           textAlign: "center"
         },
         headerPro: {
-          borderBottom: "4px solid black",
-          borderRight: "2px solid black",
+          borderBottom: "4px solid white",
+          borderRight: "2px solid white",
           borderRadius: "5px 0px 0px 0px",
-          backgroundColor: "rgb(96, 103, 178)",
+          backgroundColor: "#88BBD6",
           padding: "0px",
           marginTop: 0,
-          flex: 1,
+          flex: 1
         },
         headerQua: {
-          borderBottom: "4px solid black",
+          borderBottom: "4px solid white",
           borderRadius: "0px 5px 0px 0px",
-          backgroundColor: "rgb(96, 103, 178)",
+          backgroundColor: "#88BBD6",
           padding: "0px",
           marginTop: 0,
-          flex: 2,
+          flex: 2
         },
         prodAdd: {
           position: "fixed",
           top: "65px",
           left: "10px",
           width: "20%",
-          border: "1px solid black",
-          borderRadius: "5px"
+          border: "1px solid white",
+          borderRadius: "5px",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
         },
         prodRem: {
           position: "fixed",
           bottom: "20px",
           left: "10px",
           width: "20%",
-          border: "1px solid black",
-          borderRadius: "5px"
+          border: "1px solid white",
+          borderRadius: "5px",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
         },
         pro: { // These next two classes bother me too.
           padding: "5px",
-          margin: "5px"
+          margin: "5px",
+          color: "white"
         },
         qua: {
           padding: "5px",
-          margin: "5px"
+          margin: "5px",
+          color: "white"
+        },
+        search: {
+          width: "20%",
+          position: "fixed",
+          top: "65px",
+          right: "15px",
+          backgroundColor: "#CDCDCD",
+          padding: "5px",
+          border: "1px solid white",
+          borderRadius: "5px",
+          textAlign: "right",
+          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
+        },
+        searchTitle: {
+          color: "white",
+          margin: 0,
+          padding: "3px",
+          fontSize: "120%"
+        },
+        searchInput: {
+          width: "90%",
+          fontSize: "80%",
+          marginTop: "5px"
         }
       }
     }

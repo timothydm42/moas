@@ -24,3 +24,10 @@ then press enter
 you are now connected
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+For when we want to host:
+
+  =>   change all localhost to the ip address of the digital ocean server
+  =>   also change in the socket io paths
+
+/////////////////////////////////////////////////////
