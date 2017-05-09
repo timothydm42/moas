@@ -89,7 +89,7 @@
         --------------
 
         The latest version is available as a pair of github repositories:
-        Alexa Skill Lambda Function:
+        Alexa Skill Lambda Function including intents and utterances:
                         https://github.com/teamalexatnm/moar
         Web App repository:
                         https://github.com/teamalexatnm/moas
