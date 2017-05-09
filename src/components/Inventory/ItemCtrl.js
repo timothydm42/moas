@@ -95,9 +95,13 @@ export default class ItemCtrl extends Component{
         fontSize: "80%"
       },
       quanEditButton: {
+        backgroundColor: "#88BBD6",
+        marginLeft: "5px",
+        color: "white",
         fontSize: "65%",
         width: "38px",
-        height: "24px"
+        height: "24px",
+        border: "1px solid white"
       }
     }
   }

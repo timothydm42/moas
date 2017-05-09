@@ -121,7 +121,7 @@ export default class Inventory extends Component {
         inventory: {
           width: "55%",
           margin: "0 auto",
-          boxShadow: "3px 3px 5px rgb(175, 175, 175)"
+          boxShadow: "7px 7px 7px rgb(175, 175, 175)"
         },
         inventoryHeader: {
           display: "flex",

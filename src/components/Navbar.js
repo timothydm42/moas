@@ -48,7 +48,7 @@ export default class Navbar extends Component {
         margin: "8px 5px 2px 5px",
         border: "1px solid #88BBD6",
         borderRadius: "5px",
-        boxShadow: "3px 3px 3px rgb(175, 175, 175)"
+        boxShadow: "2px 2px 2px rgb(175, 175, 175)"
       },
       navButtonText: {
         padding: "5px 10px 5px 10px",

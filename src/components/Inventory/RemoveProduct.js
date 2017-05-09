@@ -57,7 +57,9 @@ export default class RemoveProduct extends Component{
         color: "white",
         fontSize: "70%",
         padding: "5px",
-        marginTop: "5px"
+        marginTop: "5px",
+        border: "1px solid white",
+        boxShadow: "2px 2px 2px rgb(175, 175, 175)"
       }
     }
   }

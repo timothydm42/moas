@@ -13,7 +13,7 @@ class App extends Component {
         <Router>
           <div>
             <Navbar />
-            <Redirect from="/" to="/inventory"/>
+            <Redirect from="/" to="/about"/>
             <Route path="/home" component={Home}/>
             <Route path="/inventory" component={Inventory}/>
             <Route path="/about" component={About}/>
