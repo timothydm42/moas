@@ -5,17 +5,25 @@ export default class ItemCtrl extends Component{
   constructor(props){
     super(props);
     this.state = {
-      inputVal: props.qAmt
+      inputVal: "#"
     };
     this.setQuantity = this.setQuantity;
     this.updateInputValue = this.updateInputValue.bind(this);
   }
+
+
+
   setQuantity(id,amt){
     if(Number(amt) !== 0 && !Number(amt) || Number(amt) === this.props.qAmt) return
     axios.put('http://localhost:3002/setQuantity',{
       productid:id,
       quantity:amt
-    }).then(res=>console.log(res))
+    }).then(res=>{
+      console.log(res)
+      this.setState({
+        inputVal: "#"
+      })
+    })
   }
 
   updateInputValue(evt) {
