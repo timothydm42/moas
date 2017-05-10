@@ -18,22 +18,19 @@ export default class About extends Component {
           <p style={styles.solutionStart}><strong>Hands free, verbal commands.</strong></p>
           <p style={styles.solutionRest}>With an Amazon Alexa placed near your physical inventory, you can ask it to update your stock, in or out.</p>
         </div>
-        <div style={styles.features}>
-          <p>Features</p>
-          <p>Verbally add or subtract products from your stock.</p>
-          <p>Check your inventory in passing if you don't have the time to look.</p>
-          <p>Add or remove product lines from your inventory through your Alexa as well.</p>
-          <p>The website interface allows you to do all of this manually.</p>
-          <p>Being supported by Amazon means you can easily verify what your Alexa hears when you speak to it.</p>
-          <p>Additionally, you can receive notifications through your phone whenever your Alexa is used, keeping you up to date at all times.</p>
-        </div>
+        <p style={styles.featureTitle}>Features</p>
+        <p style={styles.feature1}>Verbally add or subtract products from your stock.</p>
+        <p style={styles.feature2}>Check your inventory in passing if you don't have the time to look.</p>
+        <p style={styles.feature3}>Add or remove product lines from your inventory through your Alexa as well.</p>
+        <p style={styles.feature4}>The website interface allows you to do all of this manually.</p>
+        <p style={styles.feature5}>Being supported by Amazon means you can easily verify what your Alexa hears when you speak to it.</p>
+        <p style={styles.feature6}>Additionally, you can receive notifications through your phone whenever your Alexa is used, keeping you up to date at all times.</p>
         <div style={styles.tech}>
-          <ul style={styles.information}><h4 style={styles.techs}><strong>Web Technologies:</strong></h4>
-            <li><strong>Client:</strong> React library, React-Router, Axios</li>
-            <li><strong>Server:</strong> Node, Express, Massive</li>
-            <li><strong>Database:</strong> Postgresql, AWS Remote Database, FAAS</li>
-            <li><strong>Alexa</strong> programmed with Amazon Lambda functions</li>
-          </ul>
+          <h4 style={styles.techs}><strong>Web Technologies</strong></h4>
+          <p style={styles.individualTech}><strong>Client:</strong> React library, React-Router, Axios</p>
+          <p style={styles.individualTech}><strong>Server:</strong> Node, Express, Massive</p>
+          <p style={styles.individualTech}><strong>Database:</strong> Postgresql, AWS Remote Database, FAAS</p>
+          <p style={styles.individualTech}><strong>Alexa</strong> programmed with Amazon Lambda functions</p>
         </div>
       </div>
     )
@@ -75,7 +72,6 @@ export default class About extends Component {
         backgroundColor: "rgb(116, 116, 116)",
         border: "1px solid black",
         borderRadius: "50px 80px 30px 8px",
-        boxShadow: "3px 3px 3px rgb(46, 46, 46)",
         opacity: 0.8,
         color: "black",
         textAlign: "center"
@@ -97,12 +93,11 @@ export default class About extends Component {
       solution: {
         position: "absolute",
         top: "164px",
-        left: "335px",
+        left: "375px",
         width: "50%",
         backgroundColor: "rgb(215, 215, 215)",
         border: "1px solid white",
         borderRadius: "64px 48px 20px 28px",
-        boxShadow: "3px 3px 3px rgb(245, 245, 245)",
         opacity: 0.8,
         color: "white",
         textAlign: "center"
@@ -121,14 +116,107 @@ export default class About extends Component {
         fontSize: "105%",
         padding: "5px 30px 3px 30px"
       },
-      tech: {
-
+      featureTitle: {
+        fontSize: "180%",
+        position: "absolute",
+        top: "250px",
+        left: "35px",
+        width: "200px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.8,
+        color: "white",
+        padding: "10px 40px 10px 40px",
+        textAlign: "center",
+        zIndex: +1
       },
-      information: {
-        margin: "10px"
+      feature1: {
+        position: "absolute",
+        top: "295px",
+        left: "20px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.9,
+        color: "white",
+        padding: "15px 20px 15px 20px"
+      },
+      feature2: {
+        position: "absolute",
+        top: "335px",
+        left: "30px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.9,
+        color: "white",
+        padding: "15px 20px 15px 20px"
+      },
+      feature3: {
+        position: "absolute",
+        top: "375px",
+        left: "48px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.9,
+        color: "white",
+        padding: "15px 20px 15px 20px"
+      },
+      feature4: {
+        position: "absolute",
+        top: "415px",
+        left: "20px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.9,
+        color: "white",
+        padding: "15px 20px 15px 20px"
+      },
+      feature5: {
+        position: "absolute",
+        top: "455px",
+        left: "45px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.9,
+        color: "white",
+        padding: "15px 20px 15px 20px",
+        zIndex: +1
+      },
+      feature6: {
+        position: "absolute",
+        top: "495px",
+        left: "67px",
+        backgroundColor: "#88BBD6",
+        border: "1px solid white",
+        borderRadius: "20px",
+        opacity: 0.9,
+        color: "white",
+        padding: "15px 20px 15px 20px"
       },
       techs: {
-        color: "white"
+        color: "white",
+        textAlign: "center"
+      },
+      tech: {
+        position: "absolute",
+        top: "340px",
+        right: "25px",
+        width: "25%",
+        backgroundColor: "#88BBD6",
+        opacity: 0.8,
+        color: "white",
+        border: "1px solid white",
+        borderRadius: "5px",
+        padding: "5px"
+      },
+      individualTech: {
+        margin: "2px 0px 2px 0px",
+        padding: "1px 10px 1px 10px"
       }
     }
   }
