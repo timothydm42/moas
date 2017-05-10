@@ -21,7 +21,6 @@ export default class AddProduct extends Component{
       productname:productName.toLowerCase(),
       quantity
     }).then(res=>{
-      console.log(res)
       this.setState({
         amt:"",
         product:""

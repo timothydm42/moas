@@ -29,11 +29,9 @@ export default class Inventory extends Component {
 
     componentDidMount() {
         axios.get('http://localhost:3002/inventory').then((res) => {
-            console.log(res);
 
             let socket = io(document.location.protocol + '//localhost:3003');
             socket.on('connected', (data) => {
-                console.log('client connected');
                 socket.emit('ready for data', {});
             });
 
@@ -43,9 +41,7 @@ export default class Inventory extends Component {
             });
 
             socket.on('update', (data) => {
-              console.log(data)
               axios.get('http://localhost:3002/inventory').then((res) => {
-                console.log(res + "    in the update");
 
                 this.setState({
                   dbRows: res.data,
