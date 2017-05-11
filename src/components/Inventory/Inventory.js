@@ -28,12 +28,17 @@ export default class Inventory extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3002/inventory').then((res) => {
-            console.log(res);
+        axios.get('http://138.68.229.153:3002/inventory').then((res) => {
 
-            let socket = io(document.location.protocol + '//localhost:3003');
+
+
+            this.database = res.data.sort((a,b)=>a.productname > b.productname).map(row => (
+                <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
+            ));
+
+            let socket = io(document.location.protocol + '//138.68.229.153:3003');
+
             socket.on('connected', (data) => {
-                console.log('client connected');
                 socket.emit('ready for data', {});
             });
 
@@ -43,9 +48,8 @@ export default class Inventory extends Component {
             });
 
             socket.on('update', (data) => {
-              console.log(data)
-              axios.get('http://localhost:3002/inventory').then((res) => {
-                console.log(res + "    in the update");
+
+              axios.get('http://138.68.229.153:3002/inventory').then((res) => {
 
                 this.setState({
                   dbRows: res.data,
