@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "auth0-lock": "^10.16.0",
     "axios": "^0.16.1",
     "body-parser": "^1.17.1",
     "case-sensitive-paths-webpack-plugin": "^2.0.0",
