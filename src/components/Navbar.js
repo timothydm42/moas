@@ -15,11 +15,11 @@ export default class Navbar extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link to="/home" className="navbar-brand" style={styles.title}>Alexa Inventory with Manuel</Link>
+                <Link to="/" className="navbar-brand" style={styles.title}>Alexa Inventory with Manuel</Link>
               </div>
               <div id="navbar" className="navbar-collapse collapse">
                 <ul className="nav navbar-nav navbar-right">
-                  <li style={styles.navbarButtons}><Link to="/home" style={styles.navButtonText}>Home</Link></li>
+                  <li style={styles.navbarButtons}><Link to="/" style={styles.navButtonText}>Home</Link></li>
                   <li style={styles.navbarButtons}><Link to="/inventory" style={styles.navButtonText}>Inventory</Link></li>
                   <li style={styles.navbarButtons}><Link to="/about" style={styles.navButtonText}>About</Link></li>
                   <li style={styles.navbarButtons}><Link to="/contact" style={styles.navButtonText}>Contact</Link></li>

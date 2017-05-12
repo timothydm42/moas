@@ -1,12 +1,11 @@
 import Auth0Lock from 'auth0-lock'
-import { browserHistory } from 'react-router'
 
-export default class AuthService {
-  constructor(clientId, domain) {
+class AuthService {
+  constructor() {
     // Configure Auth0
-    this.lock = new Auth0Lock(clientId, domain, {
+    this.lock = new Auth0Lock('Qw7Pr6d0lWqyDldL8TDFYikzGMzWIQ4L', 'nathaniel-j.auth0.com', {
       auth: {
-        redirectUrl: 'http://localhost:3000/login',
+        redirectUrl: 'http://localhost:3000/inventory', 
         responseType: 'token'
       }
     })
@@ -19,8 +18,6 @@ export default class AuthService {
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken)
-    // navigate to the home route
-    browserHistory.replace('/home')
   }
 
   login() {
@@ -48,3 +45,5 @@ export default class AuthService {
     localStorage.removeItem('id_token');
   }
 }
+
+export default new AuthService();

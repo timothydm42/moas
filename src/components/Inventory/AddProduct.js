@@ -45,7 +45,6 @@ export default class AddProduct extends Component{
     return(
       <div style={styles.add}>
         <p style={styles.title}>New Product</p>
-        {console.log(JSON.stringify(this.props.products,null,2) + "  in add")}
         <input value={this.state.product} onChange={this.updateProduct} placeholder="Product Name" style={styles.product} />
 
         <input value={this.state.amt} onChange={this.updateAmt} placeholder="Quantity" style={styles.quantity} />
@@ -71,8 +70,7 @@ export default class AddProduct extends Component{
       product: {
         width: "60%",
         fontSize: "80%",
-        marginTop: "5px",
-        color: "#88BBD6",
+        marginTop: "5px"
       },
       quantity: {
         width: "30%",

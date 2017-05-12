@@ -35,7 +35,6 @@ export default class RemoveProduct extends Component{
         <input value={this.state.product} onChange={this.updateProduct} placeholder="Product Name" style={styles.product} />
 
         <button onClick={()=>(this.deleteProduct(this.state.product))} style={styles.button} >Remove Product</button>
-        {console.log(JSON.stringify(this.props.products, null,2) + "  in remove")}
       </div>
     )
   }

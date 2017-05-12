@@ -7,7 +7,7 @@ export default class Contact extends Component {
     return (
       <div style={styles.page}>
         <div style={styles.sectionOne}>
-          <img src="http://ocramius.github.io/presentations/proxy-pattern-in-php/assets/img/gh.svg" style={styles.image}/>
+          <img src="http://ocramius.github.io/presentations/proxy-pattern-in-php/assets/img/gh.svg" style={styles.image} alt="Github Icon"/>
           <h2 style={styles.header}>Github</h2>
           <div className="row" style={styles.linkSection}>
             <p className="col-md-4"><a href="https://github.com/kyleryker" style={styles.links}>Mikhail Collins</a></p>
@@ -18,10 +18,10 @@ export default class Contact extends Component {
         </div>
 
         <div style={styles.sectionTwo}>
-          <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_black-512.png" style={styles.image}/>
+          <img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_black-512.png" style={styles.image} alt="LinkedIn Icon"/>
           <h2 style={styles.header}>LinkedIn</h2>
           <div className="row" style={styles.linkSection}>
-            <p className="col-md-4"><a href="https://www.linkedin.com/in/mikhail-collins-87a85b13a/" style={styles.kyle, styles.links}>Mikhail Collins</a></p>
+            <p className="col-md-4"><a href="https://www.linkedin.com/in/mikhail-collins-87a85b13a/" style={styles.links}>Mikhail Collins</a></p>
             <p className="col-md-4"><a href="https://www.linkedin.com/in/nathaniel-smith-122962138/" style={styles.links}>Nathan Smith</a></p>
             <p className="col-md-4"><a href="https://www.linkedin.com/in/timdm/" style={styles.links}>Tim Mitchell</a></p>
           </div>

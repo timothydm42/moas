@@ -9,25 +9,29 @@ import Contact from './components/Contact';
 import Login from './components/Login';
 import AuthService from './utils/AuthService';
 
-const auth = new AuthService('Qw7Pr6d0lWqyDldL8TDFYikzGMzWIQ4L', 'nathaniel-j.auth0.com');
-
 // validate authentication for private routes
-const requireAuth = (nextState, replace) => {
-  if (!auth.loggedIn()) {
-    replace({ pathname: '/login' })
-  }
-}
+// const requireAuth = (nextState, replace) => {
+//   if (!AuthService.loggedIn()) {
+//     replace({ path: '/login' })
+//   }
+// }
 
 class App extends Component {
   render() {
+    debugger;
     return (
       <div>
-        <Router auth={auth}>
+        <Router>
           <div>
             <Navbar />
-            <Redirect from="/" to="/home"/>
-            <Route path="/home" component={Home}/>
-            <Route path="/inventory" component={Inventory} onEnter={requireAuth}/>
+            <Route path="/" exact component={Home}/>
+            <Route path="/inventory" render={() => (
+              AuthService.loggedIn() ? (
+                <Inventory />
+              ) : (
+                <Login />
+              )
+            )}/>
             <Route path="/login" component={Login}/>
             <Route path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
