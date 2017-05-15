@@ -5,20 +5,13 @@ import Home from './components/Home';
 import Inventory from './components/Inventory/Inventory';
 import About from './components/About';
 import Contact from './components/Contact';
+import Welcome from './components/Welcome';
 
 import Login from './components/Login';
 import AuthService from './utils/AuthService';
 
-// validate authentication for private routes
-// const requireAuth = (nextState, replace) => {
-//   if (!AuthService.loggedIn()) {
-//     replace({ path: '/login' })
-//   }
-// }
-
 class App extends Component {
   render() {
-    debugger;
     return (
       <div>
         <Router>
@@ -35,6 +28,7 @@ class App extends Component {
             <Route path="/login" component={Login}/>
             <Route path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
+            <Route path="/welcome" component={Welcome}/>
           </div>
         </Router>
       </div>

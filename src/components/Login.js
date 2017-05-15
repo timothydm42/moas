@@ -5,10 +5,9 @@ import AuthService from '../utils/AuthService'
 
 export class Login extends React.Component {
 
-
+// Rather than have AuthService.login run on button click here, possibly run it on the navbar when clicking on the Inventory button, if not logged in?
   render() {
     const styles = this.getStyles();
-    console.log(AuthService.login)
     return (
       <div className={styles.root}>
         <h2>Login</h2>

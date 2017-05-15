@@ -5,18 +5,20 @@ class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock('Qw7Pr6d0lWqyDldL8TDFYikzGMzWIQ4L', 'nathaniel-j.auth0.com', {
       auth: {
-        redirectUrl: 'http://localhost:3000/inventory', 
+        redirectUrl: 'http://localhost:3000/welcome',
         responseType: 'token'
       }
     })
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
     // binds login functions to keep this context
+    debugger;
     this.login = this.login.bind(this)
   }
 
   _doAuthentication(authResult) {
     // Saves the user token
+    debugger
     this.setToken(authResult.idToken)
   }
 
@@ -32,6 +34,7 @@ class AuthService {
 
   setToken(idToken) {
     // Saves user token to local storage
+    debugger
     localStorage.setItem('id_token', idToken)
   }
 
