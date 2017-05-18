@@ -15,11 +15,12 @@ export default class Navbar extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                <Link to="/home" className="navbar-brand" style={styles.title}>Alexa Inventory with Manuel</Link>
+                <Link to="/" className="navbar-brand" style={styles.title}>My Inventory with Alexa</Link>
               </div>
               <div id="navbar" className="navbar-collapse collapse">
+                <div className="nav navbar-nav navbar-left" style={styles.github}><a href="https://github.com/teamalexatnm" style={styles.githubText}>Click here to check out our Github repository for this project!</a></div>
                 <ul className="nav navbar-nav navbar-right">
-                  <li style={styles.navbarButtons}><Link to="/home" style={styles.navButtonText}>Home</Link></li>
+                  <li style={styles.navbarButtons}><Link to="/" style={styles.navButtonText}>Home</Link></li>
                   <li style={styles.navbarButtons}><Link to="/inventory" style={styles.navButtonText}>Inventory</Link></li>
                   <li style={styles.navbarButtons}><Link to="/about" style={styles.navButtonText}>About</Link></li>
                   <li style={styles.navbarButtons}><Link to="/contact" style={styles.navButtonText}>Contact</Link></li>
@@ -55,6 +56,21 @@ export default class Navbar extends Component {
       navButtonText: {
         padding: "5px 10px 5px 10px",
         color: "white"
+      },
+      github: {
+        margin: "0 auto",
+        marginTop: "15px",
+        textAlign: "center",
+        backgroundColor: "rgb(5, 5, 5)",
+        border: "1px solid black",
+        borderRadius: "5px",
+        padding: "0"
+      },
+      githubText: {
+        color: "yellow",
+        fontSize: "75%",
+        margin: "0px 10px 0px 10px",
+        padding: 0
       }
     }
   }

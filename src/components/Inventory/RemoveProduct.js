@@ -32,10 +32,10 @@ export default class RemoveProduct extends Component{
     const styles = this.getStyles();
     return(
       <div style={styles.rem}>
+        <p style={styles.title}>Remove Product</p>
         <input value={this.state.product} onChange={this.updateProduct} placeholder="Product Name" style={styles.product} />
 
         <button onClick={()=>(this.deleteProduct(this.state.product))} style={styles.button} >Remove Product</button>
-        {console.log(JSON.stringify(this.props.products, null,2) + "  in remove")}
       </div>
     )
   }
@@ -45,6 +45,12 @@ export default class RemoveProduct extends Component{
       rem: {
         backgroundColor: "#CDCDCD",
         padding: "5px"
+      },
+      title: {
+        color: "white",
+        margin: 0,
+        padding: "3px",
+        fontSize: "120%"
       },
       product: {
         width: "90%",

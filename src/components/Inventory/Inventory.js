@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
+import AuthService from '../../utils/AuthService';
+import {Link} from 'react-router-dom';
 
 import ItemCtrl from './ItemCtrl';
 import AddProduct from './AddProduct';
@@ -110,6 +112,7 @@ export default class Inventory extends Component {
                  <input value={this.state.searchTerm} onChange={this.updateSearchTerm} placeholder="Product Name" style={styles.searchInput} />
                </div>
 
+               <Link to="/" style={styles.navButtonText}><button style={styles.logoutButton} onClick={AuthService.logout}>Logout</button></Link>
 
             </div>
         )
@@ -198,6 +201,19 @@ export default class Inventory extends Component {
           width: "90%",
           fontSize: "80%",
           marginTop: "5px"
+        },
+        logoutButton: {
+          backgroundColor: "#88BBD6",
+          position: "fixed",
+          bottom: "20px",
+          right: "15px",
+          color: "white",
+          fontSize: "150%",
+          padding: "5px",
+          margin: "0 auto",
+          border: "1px solid white",
+          borderRadius: "5px",
+          boxShadow: "2px 2px 2px rgb(175, 175, 175)"
         }
       }
     }
