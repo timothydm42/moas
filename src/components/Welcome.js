@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
 
 export default class Welcome extends Component {
   render() {
@@ -17,11 +16,6 @@ export default class Welcome extends Component {
         </div>
       </div>
     )
-  }
-
-  componentDidMount() {
-    const history = createHistory()
-    history.push('/inventory')
   }
 
   getStyles() {

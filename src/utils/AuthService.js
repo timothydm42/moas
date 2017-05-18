@@ -12,13 +12,11 @@ class AuthService {
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
     // binds login functions to keep this context
-    debugger;
     this.login = this.login.bind(this)
   }
 
   _doAuthentication(authResult) {
     // Saves the user token
-    debugger
     this.setToken(authResult.idToken)
   }
 
@@ -34,7 +32,6 @@ class AuthService {
 
   setToken(idToken) {
     // Saves user token to local storage
-    debugger
     localStorage.setItem('id_token', idToken)
   }
 
@@ -45,6 +42,7 @@ class AuthService {
 
   logout() {
     // Clear user token and profile data from local storage
+    localStorage.clear();
     localStorage.removeItem('id_token');
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import Inventory from './components/Inventory/Inventory';
 import About from './components/About';
