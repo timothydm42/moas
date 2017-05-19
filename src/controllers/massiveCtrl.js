@@ -11,7 +11,7 @@ const db = massive.connectSync({
 });
 
 exports.getDb = (req, res, next) => {
-    db.run('select * from inventory', (err, database) => {
+    db.run('select * from inventory order by productname', (err, database) => {
       res.send(database);
     });
 };

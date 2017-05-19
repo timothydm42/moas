@@ -30,7 +30,7 @@ export default class Inventory extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://138.68.229.153:3002/inventory').then((res) => {
+        axios.get('http://localhost:3002/inventory').then((res) => {
 
 
 
@@ -38,7 +38,7 @@ export default class Inventory extends Component {
                 <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
             ));
 
-            let socket = io(document.location.protocol + '//138.68.229.153:3003');
+            let socket = io(document.location.protocol + '//localhost:3003');
 
             socket.on('connected', (data) => {
                 socket.emit('ready for data', {});
@@ -51,7 +51,7 @@ export default class Inventory extends Component {
 
             socket.on('update', (data) => {
 
-              axios.get('http://138.68.229.153:3002/inventory').then((res) => {
+              axios.get('http://localhost:3002/inventory').then((res) => {
 
                 this.setState({
                   dbRows: res.data,
@@ -68,11 +68,9 @@ export default class Inventory extends Component {
 
         const dbRowsDisplay = this.state.searchTerm ? this.state.dbRows
         .filter(e=>e.productname.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) !== -1)
-        .sort((a,b)=>a.productname > b.productname)
         .map(row => (
             <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
         )) : this.state.dbRows
-        .sort((a,b)=>a.productname > b.productname)
         .map(row => (
             <ItemCtrl key={row.productid} id={row.productid} pName={row.productname} qAmt={row.quantity}/>
         ))
