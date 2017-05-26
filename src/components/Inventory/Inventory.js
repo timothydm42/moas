@@ -30,7 +30,7 @@ export default class Inventory extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://138.68.11.174:3002/inventory').then((res) => {
+        axios.get('http://138.68.11.174:3002/inventoryDB').then((res) => {
 
 
 
@@ -51,7 +51,7 @@ export default class Inventory extends Component {
 
             socket.on('update', (data) => {
 
-              axios.get('http://138.68.11.174:3002/inventory').then((res) => {
+              axios.get('http://138.68.11.174:3002/inventoryDB').then((res) => {
 
                 this.setState({
                   dbRows: res.data,
