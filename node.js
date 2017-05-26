@@ -14,10 +14,6 @@ app.use(express.static('build'))
 
 app.get('/inventory', massiveCtrl.getDb);
 
-app.get('/welcome', (req,res,next)=>{
-  res.redirect('http://myinventory.biz/inventory')
-})
-
 app.put('/setQuantity',massiveCtrl.setQuantity);
 
 app.put('/removeProduct',massiveCtrl.removeProduct);
