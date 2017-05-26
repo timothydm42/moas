@@ -38,7 +38,9 @@ export default class Home extends Component {
     else{
       const styles = this.getStyles();
       return (
+        <div>
         {this.state.rComp}
+        </div>
       )
     }
   }
