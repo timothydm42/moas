@@ -15,7 +15,7 @@ app.use(express.static('build'))
 app.get('/inventory', massiveCtrl.getDb);
 
 app.get('/welcome', (req,res,next)=>{
-  res.sendFile('/src/components/Welcome.js',{root:__dirname})
+  res.redirect('http://myinventory.biz/welcome')
 })
 
 app.put('/setQuantity',massiveCtrl.setQuantity);
