@@ -6,10 +6,12 @@ import Inventory from './Inventory/Inventory';
 export default class Home extends Component {
   constructor() {
     super()
-    this.rComp = ""
+    this.state = {
+      rComp : "hi"
+    }
   }
   componentDidMount(){
-    this.forceUpdate()
+    if(AuthService.loggedIn()) this.setState({rComp:"yes"})
   }
   render() {
     if(AuthService.loggedIn()){
