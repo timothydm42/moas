@@ -17,13 +17,7 @@ class App extends Component {
         <Router>
           <div>
             <Navbar />
-            <Route path="/" exact render={() => (
-              AuthService.loggedIn() ? (
-                <Inventory />
-              ) : (
-                <Home />
-              )
-            )}/>
+            <Route path="/" exact component={Home}/>
             <Route path="/inventory" render={() => (
               AuthService.loggedIn() ? (
                 <Inventory />
