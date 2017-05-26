@@ -4,6 +4,31 @@ import AuthService from '../utils/AuthService';
 import Inventory from './Inventory/Inventory';
 
 export default class Home extends Component {
+  constructor() {
+    super()
+    this.state = {
+      rComp: <div style={styles.home}>
+        <div className="jumbotron text-center" style={styles.homeJumbo}>
+          <div style={styles.welcome}>
+            <h1 style={styles.welcomeText}>Good Morning!</h1>
+          </div>
+          <div style={styles.intro}>
+            <p style={styles.introText}>Initially you will be brought to the inventory page, this is most likely where you will spend most, if not all of your time. Front and center is your table of items and the current stock. The stock is modifiable from the input fields directly adjacent to them. You can add new products in the upper left, remove products in the lower left, or search specific products in the upper right.</p>
+            <p style={styles.introText}>You can also control your inventory through your Amazon Alexa by saying "Ask/Tell/Have My Inventory" before or after saying what you want to have modified.</p>
+          </div>
+          <div style={styles.demo}>
+            <p style={styles.demoText}>If you're seeing this, you've been invited to test the My Inventory with Alexa GUI out with our demo account. Click the login button below and use the following credentials:
+              <br />
+              email:"demo@demo.com" password:"demo"</p>
+          </div>
+          <button style={styles.button} onClick={AuthService.login}>Log In</button>
+        </div>
+      </div>
+    }
+  }
+  componentDidMount(){
+    if(AuthService.loggedIn()) this.setState({rComp : <Inventory />})
+  }
   render() {
     if(AuthService.loggedIn()){
       return(
@@ -13,23 +38,7 @@ export default class Home extends Component {
     else{
       const styles = this.getStyles();
       return (
-        <div style={styles.home}>
-          <div className="jumbotron text-center" style={styles.homeJumbo}>
-            <div style={styles.welcome}>
-              <h1 style={styles.welcomeText}>Good Morning!</h1>
-            </div>
-            <div style={styles.intro}>
-              <p style={styles.introText}>Initially you will be brought to the inventory page, this is most likely where you will spend most, if not all of your time. Front and center is your table of items and the current stock. The stock is modifiable from the input fields directly adjacent to them. You can add new products in the upper left, remove products in the lower left, or search specific products in the upper right.</p>
-              <p style={styles.introText}>You can also control your inventory through your Amazon Alexa by saying "Ask/Tell/Have My Inventory" before or after saying what you want to have modified.</p>
-            </div>
-            <div style={styles.demo}>
-              <p style={styles.demoText}>If you're seeing this, you've been invited to test the My Inventory with Alexa GUI out with our demo account. Click the login button below and use the following credentials:
-                <br />
-                email:"demo@demo.com" password:"demo"</p>
-            </div>
-            <button style={styles.button} onClick={AuthService.login}>Log In</button>
-          </div>
-        </div>
+        {this.state.rComp}
       )
     }
   }
