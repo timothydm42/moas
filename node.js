@@ -22,7 +22,7 @@ app.put('/removeProduct',massiveCtrl.removeProduct);
 app.post('/addProduct',massiveCtrl.addProduct);
 
 app.get('*', (req, res, next)=>{
-    response.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 })
 
 app.listen(3002, () => {console.log('listening on port 3002')});
