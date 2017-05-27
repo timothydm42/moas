@@ -5,7 +5,7 @@ class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock('Qw7Pr6d0lWqyDldL8TDFYikzGMzWIQ4L', 'nathaniel-j.auth0.com', {
       auth: {
-        redirectUrl: 'http://myinventory.biz/welcome',
+        redirectUrl: 'http://myinventory.biz/inventory',
         responseType: 'token'
       }
     })
